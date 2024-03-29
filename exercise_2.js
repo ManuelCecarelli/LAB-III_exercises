@@ -6,8 +6,8 @@ let input = [
     { name: "Sophie", age: 19, city: "Berlin" },
     ];
 
-const filteredPersons = input.filter((person) => person.age > 20 && person.age < 29);
+const filteredNames = input
+    .filter((person) => person.age > 20 && person.age < 29)
+    .map(person => person.name);
 
-const names = filteredPersons.map(person => person.name);
-
-console.log(names); 
+console.log(filteredNames); 

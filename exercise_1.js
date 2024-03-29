@@ -8,4 +8,4 @@ let input = [
 
 const names = input.map(person => person.name);
 
-//console.log(names);
+console.log(names);
