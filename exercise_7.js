@@ -10,8 +10,7 @@ function objectToArray(obj) {
     let newArray = [];
 
     for (let i = 0; i < objectKeys.length; i++) {
-        let newLittleArray = [objectKeys[i], objectValues[i]];
-        newArray.push(newLittleArray);
+        newArray.push([objectKeys[i], objectValues[i]]);
     }
 
     return newArray;
