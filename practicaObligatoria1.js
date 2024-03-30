@@ -127,9 +127,7 @@ let watchList = [
 
 const returnMovieTitle = (watchlist) => {
   let filteredWatchList = watchlist
-    .filter(
-      (movie) => movie.Director == "Christopher Nolan" && movie.imdbRating > 8
-    )
+    .filter((movie) => movie.Director == "Christopher Nolan" && movie.imdbRating > 8)
     .map((movie) => movie.Title);
 
   return filteredWatchList;
