@@ -6,7 +6,7 @@ import BeerItem from "../beerItem/BeerItem";
 const GeneralBeerList = (props) => {
 
   return (
-    <div>
+    <>
       <h3>1) Lista general de cervezas:</h3>
       {props.beerArray.map(beer => {
         return <BeerItem key={beer.id}
@@ -18,7 +18,7 @@ const GeneralBeerList = (props) => {
         />
         })
       }
-    </div>
+    </>
   );
 };
 

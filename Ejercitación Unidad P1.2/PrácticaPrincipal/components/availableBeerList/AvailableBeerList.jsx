@@ -6,7 +6,7 @@ import BeerItem from "../beerItem/BeerItem";
 const AvailableBeerList = (props) => {
 
   return (
-    <div>
+    <>
       <h3>2) Lista de cervezas disponibles:</h3>
       {props.beerArray
         .filter(beer => beer.available == true)
@@ -20,7 +20,7 @@ const AvailableBeerList = (props) => {
         />
         })
       }
-    </div>
+    </>
   );
 };
 

@@ -5,14 +5,14 @@ import { PropTypes} from "prop-types";
 const BeerItem = ({ beerId, beerName, beerStyle, beerPrice, isAvailable }) => {
 
     return (
-      <div>
+      <>
         <p>Id: {beerId}</p>
         <p>Beer name: {beerName}</p>
         <p>Beer style: {beerStyle}</p>
         <p>Price: ${beerPrice * 1000}</p>
         <p>{isAvailable ? "Disponible" : "No disponible"}</p>
         <br></br>
-      </div>
+      </>
     );
 };
 

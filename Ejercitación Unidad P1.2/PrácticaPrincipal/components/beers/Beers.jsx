@@ -2,6 +2,7 @@
 
 import GeneralBeerList from "../generalBeerList/GeneralBeerList";
 import AvailableBeerList from "../availableBeerList/AvailableBeerList";
+import CountRedAndIpa from "../countRedAndIpa/CountRedAndIpa";
 
 const Beers = () => {
 
@@ -72,10 +73,11 @@ const Beers = () => {
     ];
 
     return (
-      <div>
+      <>
         <GeneralBeerList beerArray = {beers}/>
         <AvailableBeerList beerArray = {beers}/>
-      </div>
+        <CountRedAndIpa beerArray = {beers}/>
+      </>
     );
   };
   
