@@ -6,11 +6,11 @@ const Products = (props) => {
     return (
         <>
             <h3>1) Listar productos del arreglo:</h3>
-            {props.productArray.map(prod => {
+            {props.productsArray.map(prod => {
                 return <Product
-                    key={props.productArray.indexOf(prod)}
+                    key={props.productsArray.indexOf(prod)}
                     name={prod}
-                    position={props.productArray.indexOf(prod)}/>
+                    position={props.productsArray.indexOf(prod)}/>
                 })
             }
         </>
@@ -18,7 +18,7 @@ const Products = (props) => {
 };
 
 Products.propTypes = {
-    productArray: PropTypes.array
+    productsArray: PropTypes.array
 };
 
 export default Products;
