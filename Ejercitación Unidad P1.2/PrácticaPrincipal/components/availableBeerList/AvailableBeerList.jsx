@@ -1,14 +1,16 @@
-/* Componente que lista todas las cervezas que existen en el arreglo sin aplicar ningún filtro */
+/* Componente que luego de aplicar un filtro lista sólo las cervezas disponibles (que tengan propiedad 'available=true') */
 
 import { PropTypes} from "prop-types";
 import BeerItem from "../beerItem/BeerItem";
 
-const GeneralBeerList = (props) => {
+const AvailableBeerList = (props) => {
 
   return (
     <div>
-      <h3>1) Lista general de cervezas:</h3>
-      {props.beerArray.map(beer => {
+      <h3>2) Lista de cervezas disponibles:</h3>
+      {props.beerArray
+        .filter(beer => beer.available == true)
+        .map(beer => {
         return <BeerItem key={beer.id}
           beerId = {beer.id}
           beerName = {beer.beerName}
@@ -22,8 +24,8 @@ const GeneralBeerList = (props) => {
   );
 };
 
-GeneralBeerList.propTypes = {
+AvailableBeerList.propTypes = {
   beerArray: PropTypes.array
 }
 
-export default GeneralBeerList;
+export default AvailableBeerList;

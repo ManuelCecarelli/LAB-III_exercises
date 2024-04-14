@@ -1,6 +1,7 @@
 /* Componente que contiene el arreglo con los datos de las cervezas. Luego de 'App' es el componente principal, ya que es utilizado como base para pasar el arreglo como props a los demás componentes según la consigna */
 
 import GeneralBeerList from "../generalBeerList/GeneralBeerList";
+import AvailableBeerList from "../availableBeerList/AvailableBeerList";
 
 const Beers = () => {
 
@@ -73,6 +74,7 @@ const Beers = () => {
     return (
       <div>
         <GeneralBeerList beerArray = {beers}/>
+        <AvailableBeerList beerArray = {beers}/>
       </div>
     );
   };
