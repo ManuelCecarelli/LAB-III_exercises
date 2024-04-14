@@ -1,10 +1,8 @@
+import Beers from "../components/beers/Beers";
+
 const App = () => {
 
-  return (
-    <>
-      
-    </>
-  )
+  return <Beers/>
 }
 
 export default App
