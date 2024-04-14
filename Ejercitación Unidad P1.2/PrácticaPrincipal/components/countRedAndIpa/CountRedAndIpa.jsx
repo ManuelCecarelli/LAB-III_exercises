@@ -12,6 +12,7 @@ const CountRedAndIpa = (props) => {
       <h3>3) Conteo de cervezas:</h3>
       <p>Cantidad de Red: {redBeer.length}</p>
       <p>Cantidad de IPA: {IpaBeer.length}</p>
+      <br/>
     </>
   );
 };

@@ -3,6 +3,7 @@
 import GeneralBeerList from "../generalBeerList/GeneralBeerList";
 import AvailableBeerList from "../availableBeerList/AvailableBeerList";
 import CountRedAndIpa from "../countRedAndIpa/CountRedAndIpa";
+import ShowStyles from "../showStyles/ShowStyles";
 
 const Beers = () => {
 
@@ -77,6 +78,7 @@ const Beers = () => {
         <GeneralBeerList beerArray = {beers}/>
         <AvailableBeerList beerArray = {beers}/>
         <CountRedAndIpa beerArray = {beers}/>
+        <ShowStyles beerArray = {beers}/>
       </>
     );
   };

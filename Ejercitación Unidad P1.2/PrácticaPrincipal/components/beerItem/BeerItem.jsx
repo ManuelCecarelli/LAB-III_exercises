@@ -11,7 +11,7 @@ const BeerItem = ({ beerId, beerName, beerStyle, beerPrice, isAvailable }) => {
         <p>Beer style: {beerStyle}</p>
         <p>Price: ${beerPrice * 1000}</p>
         <p>{isAvailable ? "Disponible" : "No disponible"}</p>
-        <br></br>
+        <br />
       </>
     );
 };

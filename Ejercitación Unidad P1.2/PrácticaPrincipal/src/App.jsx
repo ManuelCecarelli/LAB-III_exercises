@@ -1,8 +1,5 @@
 import Beers from "../components/beers/Beers";
 
-const App = () => {
-
-  return <Beers/>
-}
+const App = () => <Beers/>;
 
 export default App
