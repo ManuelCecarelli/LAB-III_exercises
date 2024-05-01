@@ -38,12 +38,12 @@ const App = () => {
   ];
 
   return (
-    <>
+    <div className="d-flex flex-column align-items-center">
       <h2>Books Champion App</h2>
       <p>¡Quiero leer libros!</p>
       <NewBook />
       <Books bookArray={books}/>
-    </>
+    </div>
   )
 }
 

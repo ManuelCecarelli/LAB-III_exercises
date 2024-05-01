@@ -5,7 +5,6 @@ import { useState } from "react";
 const BookItem = ({ title, author, rating, pageCount, imageUrl }) => {
     const [bookTitle,setBookTitle] = useState(title);
 
-    let newTitle = title;
     const clickHandler = () => {
         setBookTitle("Actualizado");
     };
@@ -22,7 +21,7 @@ const BookItem = ({ title, author, rating, pageCount, imageUrl }) => {
                 <Card.Subtitle>{author}</Card.Subtitle>
                 <div>{rating?.length} estrellas</div>
                 <p>{pageCount} páginas</p>
-                <Button onClick={clickHandler}>Agregar titulo</Button>
+                <Button onClick={clickHandler}>Actualizar título</Button>
             </Card.Body>
         </Card>
     );
