@@ -1,20 +1,34 @@
 import { PropTypes } from "prop-types";
 import BookItem from "../bookitem/BookItem";
+import { useState } from "react";
 
 const Books = ({ bookArray }) => {
 
+    const [bookTitleMessage, setBookTitleMessage] = useState("");
+
     return (
-        <div className="d-flex justify-content-center flex-wrap">
-            {bookArray.map(book => {
-                return <BookItem key={book.id}
-                    id={book.id}
-                    title={book.bookTitle}
-                    author={book.bookAuthor}
-                    rating={book.bookRating}
-                    pageCount={book.pageCount}
-                    imageUrl={book.imageUrl}
-                />
-            })}
+        <div>
+            <div className="d-flex justify-content-center">
+                <p>{
+                    bookTitleMessage
+                    ? `Libro seleccionado: ${bookTitleMessage}.`
+                    : `Aun no se ha seleccionado ningún libro.`
+                    }
+                </p>
+            </div>
+            <div className="d-flex justify-content-center flex-wrap">
+                {bookArray.map(book => {
+                    return <BookItem key={book.id}
+                        id={book.id}
+                        title={book.bookTitle}
+                        author={book.bookAuthor}
+                        rating={book.bookRating}
+                        pageCount={book.pageCount}
+                        imageUrl={book.imageUrl}
+                        selectedBookTitle={setBookTitleMessage}
+                    />
+                })}
+            </div>
         </div>
     );
 };

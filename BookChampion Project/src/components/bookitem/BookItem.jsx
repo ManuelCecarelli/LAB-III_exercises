@@ -1,14 +1,12 @@
 import { PropTypes } from "prop-types";
 import { Card, Button } from "react-bootstrap";
-import { useState } from "react";
 
-const BookItem = ({ id, title, author, rating, pageCount, imageUrl }) => {
-    const [bookTitle,setBookTitle] = useState(title);
+const BookItem = ({ id, title, author, rating, pageCount, imageUrl, selectedBookTitle }) => {
 
-    const clickHandler = () => {
-        setBookTitle("Actualizado");
-    };
-
+    const onClickButtonHandler = () => {
+        selectedBookTitle(title);
+    }
+    
     return (
         <Card className="mx-3" style={{width: "22rem"}}>
             <Card.Img
@@ -17,12 +15,12 @@ const BookItem = ({ id, title, author, rating, pageCount, imageUrl }) => {
                 src={imageUrl !== "" ? imageUrl : "https://bit.ly/47NylZk"}
             />
             <Card.Body>
-                <Card.Title>{bookTitle}</Card.Title>
+                <Card.Title>{title}</Card.Title>
                 <Card.Subtitle>{author}</Card.Subtitle>
                 <div>Id: {id}</div>
                 <div>{rating?.length} estrellas</div>
                 <p>{pageCount} páginas</p>
-                <Button onClick={clickHandler}>Actualizar título</Button>
+                <Button onClick={onClickButtonHandler}>Seleccionar libro</Button>
             </Card.Body>
         </Card>
     );
@@ -34,7 +32,8 @@ BookItem.propTypes = {
     author: PropTypes.string,
     pageCount: PropTypes.number,
     rating: PropTypes.array,
-    imageUrl: PropTypes.string
-    };
+    imageUrl: PropTypes.string,
+    selectedBookTitle: PropTypes.func
+};
 
 export default BookItem;
