@@ -1,8 +1,7 @@
 import { Button, Card, Col, Form, Row } from "react-bootstrap";
 import { useState } from "react";
 
-
-const NewBook = () => {
+const NewBook = ({ onBookDataSaved }) => {
     const [title, setTitle] = useState("");
     const changeTitleHandler = (event) => {
         setTitle(event.target.value);
@@ -39,7 +38,7 @@ const NewBook = () => {
             pageCount: parseInt(pageCount, 10),
             imgUrl
         };
-        console.log(newBook);
+        onBookDataSaved(newBook);
         setTitle("");
         setAuthor("");
         setScore("");

@@ -1,12 +1,13 @@
 import { PropTypes } from "prop-types";
 import BookItem from "../bookitem/BookItem";
 
-const Books = (props) => {
+const Books = ({ bookArray }) => {
 
     return (
         <div className="d-flex justify-content-center flex-wrap">
-            {props.bookArray.map(book => {
-                return <BookItem key={props.bookArray.indexOf(book)}
+            {bookArray.map(book => {
+                return <BookItem key={book.id}
+                    id={book.id}
                     title={book.bookTitle}
                     author={book.bookAuthor}
                     rating={book.bookRating}
