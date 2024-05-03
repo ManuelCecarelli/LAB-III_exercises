@@ -22,7 +22,7 @@ const NewBook = ({ onBookDataSaved }) => {
         setPageCount(event.target.value);
     };
 
-    const [imgUrl, setImgUrl] = useState("");
+    const [imageUrl, setImgUrl] = useState("");
     const changeImgUrlHandler = (event) => {
         setImgUrl(event.target.value);
     };
@@ -30,13 +30,13 @@ const NewBook = ({ onBookDataSaved }) => {
     const submitBookHandler = (event) => {
         event.preventDefault();
         const newBook = {
-            title,
-            author,
-            score: score !== ""
+            bookTitle: title,
+            bookAuthor: author,
+            bookRating: score !== ""
                 ? Array(parseInt(score,10)).fill("*")
                 : Array(0),
             pageCount: parseInt(pageCount, 10),
-            imgUrl
+            imageUrl
         };
         onBookDataSaved(newBook);
         setTitle("");
@@ -108,7 +108,7 @@ const NewBook = ({ onBookDataSaved }) => {
                             <Form.Control
                                 type="text"
                                 placeholder="Ingresar url de imagen"
-                                value={imgUrl}
+                                value={imageUrl}
                                 onChange={changeImgUrlHandler}
                             />
                         </Form.Group>

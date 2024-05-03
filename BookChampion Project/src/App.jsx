@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Books from "./components/books/Books";
 import NewBook from "./components/newBook/NewBook";
 
@@ -5,7 +6,7 @@ const App = () => {
 
   const books = [
     {
-      id: Math.random().toString(),
+      bookId: Math.random().toString(),
       bookTitle: "100 años de soledad",
       bookAuthor: "Gabriel García Marquez",
       bookRating: Array(5).fill("*"),
@@ -13,7 +14,7 @@ const App = () => {
       imageUrl: "https://images.cdn3.buscalibre.com/fit-in/360x360/61/8d/618d227e8967274cd9589a549adff52d.jpg"
     },
     {
-      id: Math.random().toString(),
+      bookId: Math.random().toString(),
       bookTitle: "Asesinato en el Orient Express",
       bookAuthor: "Agatha Christie",
       bookRating: Array(4).fill("*"),
@@ -22,7 +23,7 @@ const App = () => {
       "https://m.media-amazon.com/images/I/71RFyM95qwL._AC_UF1000,1000_QL80_.jpg"
     },
     {
-      id: Math.random().toString(),
+      bookId: Math.random().toString(),
       bookTitle: "Las dos torres",
       bookAuthor: "J.R.R Tolkien",
       bookRating: Array(5).fill("*"),
@@ -31,7 +32,7 @@ const App = () => {
       "https://m.media-amazon.com/images/I/A1y0jd28riL._AC_UF1000,1000_QL80_.jpg"
     },
     {
-      id: Math.random().toString(),
+      bookId: Math.random().toString(),
       bookTitle: "50 sombras de Grey",
       bookAuthor: "E.L James",
       bookRating: Array(1).fill("*"),
@@ -41,12 +42,17 @@ const App = () => {
     }
   ];
 
+  const [updatedBookArray,setUpdatedBookArray] = useState(books);
+
   const saveBookDataHandler = (enteredBookData) => {
     const bookData = {
+      bookId: Math.random().toString(),
       ...enteredBookData,
-      id: Math.random().toString()
     };
     console.log(bookData);
+    const newBookArray = [bookData,...updatedBookArray];
+    console.log(newBookArray);
+    setUpdatedBookArray(newBookArray);
   };
 
   return (
@@ -54,7 +60,7 @@ const App = () => {
       <h2>Books Champion App</h2>
       <p>¡Quiero leer libros!</p>
       <NewBook onBookDataSaved={saveBookDataHandler}/>
-      <Books bookArray={books}/>
+      <Books bookArray={updatedBookArray}/>
     </div>
   )
 };

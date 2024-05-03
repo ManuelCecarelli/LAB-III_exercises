@@ -18,8 +18,8 @@ const Books = ({ bookArray }) => {
             </div>
             <div className="d-flex justify-content-center flex-wrap">
                 {bookArray.map(book => {
-                    return <BookItem key={book.id}
-                        id={book.id}
+                    return <BookItem key={book.bookId}
+                        id={book.bookId}
                         title={book.bookTitle}
                         author={book.bookAuthor}
                         rating={book.bookRating}
