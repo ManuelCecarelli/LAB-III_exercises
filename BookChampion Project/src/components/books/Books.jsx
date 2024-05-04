@@ -1,6 +1,7 @@
 import { PropTypes } from "prop-types";
 import BookItem from "../bookitem/BookItem";
 import { useState } from "react";
+import BookSearch from "../filter/BookSearch";
 
 const Books = ({ bookArray }) => {
 
@@ -8,7 +9,8 @@ const Books = ({ bookArray }) => {
 
     return (
         <div>
-            <div className="d-flex justify-content-center">
+            <div className="d-flex flex-column align-items-center">
+                <BookSearch/>
                 <p>{
                     bookTitleMessage
                     ? `Libro seleccionado: ${bookTitleMessage}.`
