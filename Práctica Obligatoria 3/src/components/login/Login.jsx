@@ -7,7 +7,8 @@ const Login = () => {
 
     const onChangeHandler = (event) => {
         setUserNameInput(event.target.value);
-        if (userNameInput.includes("o") || userNameInput.includes("O")) {
+        let inputContent = event.target.value;
+        if (inputContent.includes("o") || inputContent.includes("O")) {
             alert('Por favor, ¡Nombres de usuario sin la letra o!');
             setUserNameInput("");
         };
