@@ -6,11 +6,23 @@ import BookSearch from "../filter/BookSearch";
 const Books = ({ bookArray }) => {
 
     const [bookTitleMessage, setBookTitleMessage] = useState("");
+    const [filteredBookArray,setFilteredBookArray] = useState(bookArray);
+
+    const buldFilteredBookArray = (filterValue) => {
+        if (filterValue) {
+            let auxiliarFilteredBookArray = bookArray.filter(book => book.bookTitle.toLowerCase().includes(filterValue));
+            setFilteredBookArray(auxiliarFilteredBookArray);
+        } else {
+            setFilteredBookArray(bookArray);
+        };
+    };
 
     return (
         <div>
             <div className="d-flex flex-column align-items-center">
-                <BookSearch/>
+                <BookSearch 
+                    onLinkValue={buldFilteredBookArray}
+                />
                 <p>{
                     bookTitleMessage
                     ? `Libro seleccionado: ${bookTitleMessage}.`
@@ -19,24 +31,31 @@ const Books = ({ bookArray }) => {
                 </p>
             </div>
             <div className="d-flex justify-content-center flex-wrap">
-                {bookArray.map(book => {
-                    return <BookItem key={book.bookId}
-                        id={book.bookId}
-                        title={book.bookTitle}
-                        author={book.bookAuthor}
-                        rating={book.bookRating}
-                        pageCount={book.pageCount}
-                        imageUrl={book.imageUrl}
-                        selectedBookTitle={setBookTitleMessage}
-                    />
-                })}
+                {filteredBookArray.length > 0 
+                    ? (
+                        filteredBookArray.map(book => {
+                            return <BookItem key={book.bookId}
+                                id={book.bookId}
+                                title={book.bookTitle}
+                                author={book.bookAuthor}
+                                rating={book.bookRating}
+                                pageCount={book.pageCount}
+                                imageUrl={book.imageUrl}
+                                selectedBookTitle={setBookTitleMessage}
+                            />
+                        })
+                    )
+                    : (
+                        <p>Ningún libro coincide con la búsqueda seleccionada</p>
+                    )
+                }
             </div>
         </div>
     );
 };
 
 Books.propTypes = {
-    bookArray: PropTypes.array
-    };
+    bookArray: PropTypes.array,
+};
 
 export default Books;

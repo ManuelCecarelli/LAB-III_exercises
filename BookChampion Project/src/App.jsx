@@ -43,6 +43,7 @@ const App = () => {
   ];
 
   const [updatedBookArray,setUpdatedBookArray] = useState(books);
+  const [cleanFlag,setCLeanFlag] = useState(false);
 
   const saveBookDataHandler = (enteredBookData) => {
     const bookData = {
@@ -53,6 +54,7 @@ const App = () => {
     const newBookArray = [bookData,...updatedBookArray];
     console.log(newBookArray);
     setUpdatedBookArray(newBookArray);
+    setCLeanFlag(true);
   };
 
   return (
@@ -60,7 +62,9 @@ const App = () => {
       <h2>Books Champion App</h2>
       <p>¡Quiero leer libros!</p>
       <NewBook onBookDataSaved={saveBookDataHandler}/>
-      <Books bookArray={updatedBookArray}/>
+      <Books 
+        bookArray={updatedBookArray} 
+      />
     </div>
   )
 };

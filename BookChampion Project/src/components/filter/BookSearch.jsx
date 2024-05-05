@@ -1,12 +1,15 @@
 import { Form } from "react-bootstrap";
 import { useState } from "react";
+import { PropTypes } from "prop-types";
 
-const BookSearch = () => {
+const BookSearch = ({ onLinkValue }) => {
 
     const [searchInput,setSearchInput] = useState("");
 
     const onChangeHandler = (event) => {
         setSearchInput(event.target.value);
+        let auxiliarSearchInput = event.target.value.toLowerCase();
+        onLinkValue(auxiliarSearchInput);
     };
 
     return (
@@ -19,6 +22,10 @@ const BookSearch = () => {
             />
         </Form.Group>
     );
+};
+
+BookSearch.propTypes = {
+    onLinkValue: PropTypes.func
 };
 
 export default BookSearch;
