@@ -1,5 +1,6 @@
 import { PropTypes } from "prop-types";
 import { Card, Button } from "react-bootstrap";
+import FiveStars from "../fiveStars/FiveStars";
 
 const BookItem = ({ id, title, author, rating, pageCount, imageUrl, selectedBookTitle }) => {
 
@@ -8,7 +9,7 @@ const BookItem = ({ id, title, author, rating, pageCount, imageUrl, selectedBook
     }
     
     return (
-        <Card className="mx-3" style={{width: "22rem"}}>
+        <Card className="mx-3 mb-4" style={{width: "22rem"}}>
             <Card.Img
                 height={400}
                 variant="top"
@@ -18,7 +19,10 @@ const BookItem = ({ id, title, author, rating, pageCount, imageUrl, selectedBook
                 <Card.Title>{title}</Card.Title>
                 <Card.Subtitle>{author}</Card.Subtitle>
                 <div>Id: {id}</div>
-                <div>{rating?.length} estrellas</div>
+                {rating.length
+                    ? <FiveStars scoreArray={rating}/>
+                    : <div>Puntaje: No se ha especificado</div>
+                }
                 <p>{pageCount} páginas</p>
                 <Button onClick={onClickButtonHandler}>Seleccionar libro</Button>
             </Card.Body>

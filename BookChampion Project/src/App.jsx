@@ -62,9 +62,7 @@ const App = () => {
       <h2>Books Champion App</h2>
       <p>¡Quiero leer libros!</p>
       <NewBook onBookDataSaved={saveBookDataHandler}/>
-      <Books 
-        bookArray={updatedBookArray} 
-      />
+      <Books bookArray={updatedBookArray}/>
     </div>
   )
 };
