@@ -27,6 +27,7 @@ const ChangeDollar = ({ onChangePrice }) => {
                     id="dollar-cotization"
                     placeholder="Ingrese cotización..."
                     value={newPrice}
+                    required
                     onChange={onChangeHandler}
                 />
                 <button type="submit">Aplicar</button>
