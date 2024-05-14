@@ -1,0 +1,8 @@
+p {
+    margin: 1px;
+}
+
+#cotizator {
+    display: flex;
+    gap: 3px;
+}
