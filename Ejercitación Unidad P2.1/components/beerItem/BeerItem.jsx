@@ -8,7 +8,7 @@ const BeerItem = ({ beerId, beerName, beerStyle, beerPrice, beerAvailable }) => 
         <p>Beer name: {beerName}</p>
         <p>Beer Style: {beerStyle}</p>
         <p>Price: ${beerPrice}</p>
-        <p>Available: {beerAvailable}</p>
+        <p>Available: {beerAvailable ? "Disponible" : "NO disponible"}</p>
         <br/>
       </>
     );
