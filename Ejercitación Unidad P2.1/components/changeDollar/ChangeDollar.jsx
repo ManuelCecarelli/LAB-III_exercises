@@ -10,7 +10,6 @@ const ChangeDollar = ({ onChangePrice }) => {
         setNewPrice(inputValue);
     };
 
-
     const onSubmitHandler = (event) => {
         event.preventDefault();
         onChangePrice(newPrice);
@@ -19,8 +18,8 @@ const ChangeDollar = ({ onChangePrice }) => {
 
     return (
         <>
-            <form id="cotizator" onSubmit={onSubmitHandler}>
-                <label htmlFor="dollar-cotization">Dollar cotization:</label>
+            <form className="flexible" onSubmit={onSubmitHandler}>
+                <label htmlFor="dollar-cotization"> {"=>"} Dollar cotization:</label>
                 <input
                     type="text"
                     name="dollar-cotization"

@@ -2,7 +2,11 @@ p {
     margin: 1px;
 }
 
-#cotizator {
+.flexible {
     display: flex;
-    gap: 3px;
+    gap: 5px;
+}
+
+.show-button {
+    width: 130px;
 }

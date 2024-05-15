@@ -70,15 +70,30 @@ const Beers = () => {
         }
     ];
 
+    const [showChangeDollar, setShowChangeDollar] = useState(true);
+
     const [dollarPrice, setDollarPrice] = useState(1);
 
     const changePrice = (newPrice) => {
         setDollarPrice(newPrice);
     };
 
+    const onClickHandler = () => {
+        showChangeDollar
+            ? setShowChangeDollar(false)
+            : setShowChangeDollar(true)
+    };
+
     return (
       <>
-        <ChangeDollar onChangePrice={changePrice}/>
+        <div className="flexible">
+            <button className="show-button" onClick={onClickHandler}>{showChangeDollar ? "Ocultar Cotizador" : "Mostrar Cotozador"}</button>
+            {showChangeDollar
+                ? <ChangeDollar onChangePrice={changePrice}/>
+                : ""
+            }
+        </div>
+        <br/>
         {beers.map(beer => {
             return <BeerItem 
                 key={beer.id}
