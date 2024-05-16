@@ -1,5 +1,6 @@
 import BeerItem from "../beerItem/BeerItem";
 import ChangeDollar from "../changeDollar/ChangeDollar";
+import NewBeer from "../newBeer/NewBeer";
 import { useState } from "react";
 
 const Beers = () => {
@@ -70,6 +71,8 @@ const Beers = () => {
         }
     ];
 
+    const [newBeersArray, setNewBeersArray] = useState(beers);
+
     const [showChangeDollar, setShowChangeDollar] = useState(true);
 
     const [dollarPrice, setDollarPrice] = useState(1);
@@ -84,6 +87,17 @@ const Beers = () => {
             : setShowChangeDollar(true)
     };
 
+    const addNewBeer = (newBeer) => {
+        let auxiliarNewBeer = {
+            id: newBeersArray.length + 1,
+            ...newBeer
+        }
+        console.log(auxiliarNewBeer)
+        const auxiliarBeersArray = [...newBeersArray, auxiliarNewBeer]
+        console.log(auxiliarBeersArray)
+        setNewBeersArray(auxiliarBeersArray)
+    };
+
     return (
       <>
         <div className="flexible">
@@ -94,7 +108,9 @@ const Beers = () => {
             }
         </div>
         <br/>
-        {beers.map(beer => {
+        <NewBeer onAddNewBeer={addNewBeer}/>
+        <br />
+        {newBeersArray.map(beer => {
             return <BeerItem 
                 key={beer.id}
                 beerId={beer.id}

@@ -10,3 +10,21 @@ p {
 .show-button {
     width: 130px;
 }
+
+.myForm {
+    flex-direction: column;
+    padding: 8px;
+    width: 15%;
+    border: solid 1px black;
+    border-radius: 5px;
+    background-color: lightyellow;
+}
+
+.radioButtons {
+    justify-content: start;
+    gap: 8px;
+}
+
+.input {
+    margin-bottom: 7px;
+}
