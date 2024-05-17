@@ -1,20 +1,35 @@
 import PropTypes from "prop-types";
-import Task from "../task/Task";
+import PendantTask from "../pendantTask/PendantTask";
+import CompletedTask from "../completedTask/CompletedTask";
 
-const TasksList = ({ tasksList }) => {
 
-    return (
-      <div className="d-flex-column">
-        <h3>Mi lista de tareas:</h3>
+const TasksList = ({ tasksList, onDeleteTask, onCompleteTask }) => {
+
+  return ( 
+    <div className="d-flex-column w-50">
+        <h3 className="mx-2">{tasksList.length != 0 ? "Mi lista de tareas:" : "No hay tareas registradas"}</h3>
         {tasksList.map(task => {
-            return <Task taskName={task}/>
+          return task.completed == false
+            ? <PendantTask
+                key={task.id}
+                taskName={task.name}
+                onDeleteTask={onDeleteTask}
+                onCompleteTask={onCompleteTask}
+              />
+            : <CompletedTask
+                key={task.id}
+                taskName={task.name}
+                onDeleteTask={onDeleteTask}
+              />
         })}
-      </div>
-    )
+    </div>
+  )
 }
 
 TasksList.propTypes = {
-    tasksList: PropTypes.array
+    tasksList: PropTypes.array,
+    onDeleteTask: PropTypes.func,
+    onCompleteTask: PropTypes.func
 }
 
 export default TasksList;
