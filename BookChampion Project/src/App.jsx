@@ -44,7 +44,7 @@ const App = () => {
   ];
 
   const [updatedBookArray,setUpdatedBookArray] = useState(books);
-  const [cleanFlag,setCLeanFlag] = useState(false);
+  const [bookIdToDelete, setBookIdToDelete] = useState("");
 
   const saveBookDataHandler = (enteredBookData) => {
     const bookData = {
@@ -58,17 +58,25 @@ const App = () => {
     setCLeanFlag(true);
   };
 
+  const getBookIdToDelete = (bookId) => {
+    setBookIdToDelete(bookId);
+    console.log(bookIdToDelete)
+  };
+
   return (
-    <div className="d-flex justify-content-center">
-      <Login/>
-    </div>
-    /*<div className="d-flex flex-column align-items-center">
+    <div className="d-flex flex-column align-items-center">
       <h2>Books Champion App</h2>
       <p>¡Quiero leer libros!</p>
       <NewBook onBookDataSaved={saveBookDataHandler}/>
-      <Books bookArray={updatedBookArray}/>
-    </div>*/
+      <Books
+        bookArray={updatedBookArray}
+        onGetBookIdToDelete={getBookIdToDelete}
+      />
+    </div>
+    /* <div className="d-flex justify-content-center">
+      <Login/>
+    </div> */
   )
 };
 
-export default App
+export default App;

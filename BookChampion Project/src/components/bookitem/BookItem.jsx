@@ -1,12 +1,17 @@
 import { PropTypes } from "prop-types";
-import { Card, Button } from "react-bootstrap";
+import { Card, Button, Stack } from "react-bootstrap";
 import FiveStars from "../fiveStars/FiveStars";
 
-const BookItem = ({ id, title, author, rating, pageCount, imageUrl, selectedBookTitle }) => {
+const BookItem = ({ id, title, author, rating, pageCount, imageUrl, selectedBookTitle, onModalShowHandler, onGetBookIdToDelete }) => {
 
-    const onClickButtonHandler = () => {
+    const onClickSelectHandler = () => {
         selectedBookTitle(title);
     }
+
+    const onClickDeleteHandler = () => {
+        onModalShowHandler();
+        onGetBookIdToDelete(id);
+    };
     
     return (
         <Card className="mx-3 mb-4" style={{width: "22rem"}}>
@@ -24,7 +29,10 @@ const BookItem = ({ id, title, author, rating, pageCount, imageUrl, selectedBook
                     : <div>Puntaje: No se ha especificado</div>
                 }
                 <p>{pageCount} páginas</p>
-                <Button onClick={onClickButtonHandler}>Seleccionar libro</Button>
+                <Stack direction="horizontal" gap={3}>
+                    <Button className="w-50" onClick={onClickSelectHandler}>Seleccionar libro</Button>
+                    <Button className="w-50" variant="danger" onClick={onClickDeleteHandler}>Eliminar libro</Button>
+                </Stack>
             </Card.Body>
         </Card>
     );
@@ -37,7 +45,9 @@ BookItem.propTypes = {
     pageCount: PropTypes.number,
     rating: PropTypes.array,
     imageUrl: PropTypes.string,
-    selectedBookTitle: PropTypes.func
+    selectedBookTitle: PropTypes.func,
+    onModalShowHandler: PropTypes.func,
+    onGetBookIdToDelete: PropTypes.func
 };
 
 export default BookItem;

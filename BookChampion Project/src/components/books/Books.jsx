@@ -2,11 +2,13 @@ import { PropTypes } from "prop-types";
 import BookItem from "../bookitem/BookItem";
 import { useState } from "react";
 import BookSearch from "../filter/BookSearch";
+import EliminarLibro from "../eliminarLibro/EliminarLibro";
 
-const Books = ({ bookArray }) => {
+const Books = ({ bookArray, onGetBookIdToDelete }) => {
 
     const [bookTitleMessage, setBookTitleMessage] = useState("");
     const [filteredBookArray,setFilteredBookArray] = useState(bookArray);
+    const [modalShow, setModalShow] = useState(false);
 
     const buldFilteredBookArray = (filterValue) => {
         if (filterValue) {
@@ -14,6 +16,14 @@ const Books = ({ bookArray }) => {
             setFilteredBookArray(auxiliarFilteredBookArray);
         } else {
             setFilteredBookArray(bookArray);
+        };
+    };
+
+    const modalShowHandler = () => {
+        if (modalShow) {
+            setModalShow(false)
+        } else {
+            setModalShow(true)
         };
     };
 
@@ -42,6 +52,8 @@ const Books = ({ bookArray }) => {
                                 pageCount={book.pageCount}
                                 imageUrl={book.imageUrl}
                                 selectedBookTitle={setBookTitleMessage}
+                                onModalShowHandler={modalShowHandler}
+                                onGetBookIdToDelete={onGetBookIdToDelete}
                             />
                         })
                     )
@@ -50,12 +62,17 @@ const Books = ({ bookArray }) => {
                     )
                 }
             </div>
+            <EliminarLibro
+                show={modalShow}
+                onModalShowHandler={modalShowHandler}
+            />    
         </div>
     );
 };
 
 Books.propTypes = {
     bookArray: PropTypes.array,
+    onGetBookIdToDelete: PropTypes.func
 };
 
 export default Books;
