@@ -1,16 +1,16 @@
 import PropTypes from "prop-types"
 import { Button, Modal } from 'react-bootstrap';
 
-const EliminarLibro = (props) => {
+const EliminarLibro = ({ show, onModalShowHandler }) => {
 
   const onClickHandler = () => {
     //props.onDeleteBookHandler();
-    props.onModalShowHandler();
+    onModalShowHandler();
   };
 
   return (
     <Modal
-      {...props}
+      show={show}
       size="md"
       aria-labelledby="contained-modal-title-vcenter"
       centered
@@ -26,8 +26,8 @@ const EliminarLibro = (props) => {
         </p>
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="secondary" onClick={props.onModalShowHandler}>Cancelar</Button>
-        <Button onClick={onClickHandler}>Sí, deseo eliminarlo</Button>
+        <Button variant="secondary" onClick={onModalShowHandler}>Cancelar</Button>
+        <Button variant="danger" onClick={onClickHandler}>Sí, deseo eliminarlo</Button>
       </Modal.Footer>
     </Modal>
   );

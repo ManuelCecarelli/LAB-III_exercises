@@ -10,7 +10,7 @@ const BookItem = ({ id, title, author, rating, pageCount, imageUrl, selectedBook
 
     const onClickDeleteHandler = () => {
         onModalShowHandler();
-        onGetBookIdToDelete(id);
+        //onGetBookIdToDelete(id);
     };
     
     return (
@@ -23,7 +23,6 @@ const BookItem = ({ id, title, author, rating, pageCount, imageUrl, selectedBook
             <Card.Body>
                 <Card.Title>{title}</Card.Title>
                 <Card.Subtitle>{author}</Card.Subtitle>
-                <div>Id: {id}</div>
                 {rating.length
                     ? <FiveStars scoreArray={rating}/>
                     : <div>Puntaje: No se ha especificado</div>
