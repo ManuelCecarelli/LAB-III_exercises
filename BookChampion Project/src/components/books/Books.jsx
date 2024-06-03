@@ -4,75 +4,67 @@ import { useState } from "react";
 import BookSearch from "../filter/BookSearch";
 import EliminarLibro from "../eliminarLibro/EliminarLibro";
 
-const Books = ({ bookArray, onGetBookIdToDelete }) => {
+const Books = ({ bookArray }) => {
+  const [bookTitleMessage, setBookTitleMessage] = useState("");
+  const [filteredBookArray, setFilteredBookArray] = useState(bookArray);
+  const [modalShow, setModalShow] = useState(false);
 
-    const [bookTitleMessage, setBookTitleMessage] = useState("");
-    const [filteredBookArray,setFilteredBookArray] = useState(bookArray);
-    const [modalShow, setModalShow] = useState(false);
+  const buldFilteredBookArray = (filterValue) => {
+    if (filterValue) {
+      let auxiliarFilteredBookArray = bookArray.filter((book) =>
+        book.bookTitle.toLowerCase().includes(filterValue)
+      );
+      setFilteredBookArray(auxiliarFilteredBookArray);
+    } else {
+      setFilteredBookArray(bookArray);
+    }
+  };
 
-    const buldFilteredBookArray = (filterValue) => {
-        if (filterValue) {
-            let auxiliarFilteredBookArray = bookArray.filter(book => book.bookTitle.toLowerCase().includes(filterValue));
-            setFilteredBookArray(auxiliarFilteredBookArray);
-        } else {
-            setFilteredBookArray(bookArray);
-        };
-    };
+  const modalShowHandler = () => {
+    if (modalShow) {
+      setModalShow(false);
+    } else {
+      setModalShow(true);
+    }
+  };
 
-    const modalShowHandler = () => {
-        if (modalShow) {
-            setModalShow(false)
-        } else {
-            setModalShow(true)
-        };
-    };
-
-    return (
-        <div>
-            <div className="d-flex flex-column align-items-center">
-                <BookSearch 
-                    onLinkValue={buldFilteredBookArray}
-                />
-                <p>{
-                    bookTitleMessage
-                    ? `Libro seleccionado: ${bookTitleMessage}.`
-                    : `Aun no se ha seleccionado ningún libro.`
-                    }
-                </p>
-            </div>
-            <div className="d-flex justify-content-center flex-wrap">
-                {filteredBookArray.length > 0 
-                    ? (
-                        filteredBookArray.map(book => {
-                            return <BookItem key={book.bookId}
-                                id={book.bookId}
-                                title={book.bookTitle}
-                                author={book.bookAuthor}
-                                rating={book.bookRating}
-                                pageCount={book.pageCount}
-                                imageUrl={book.imageUrl}
-                                selectedBookTitle={setBookTitleMessage}
-                                onModalShowHandler={modalShowHandler}
-                                onGetBookIdToDelete={onGetBookIdToDelete}
-                            />
-                        })
-                    )
-                    : (
-                        <p>Ningún libro coincide con la búsqueda seleccionada</p>
-                    )
-                }
-            </div>
-            <EliminarLibro
-                show={modalShow}
+  return (
+    <div>
+      <div className="d-flex flex-column align-items-center">
+        <BookSearch onLinkValue={buldFilteredBookArray} />
+        <p>
+          {bookTitleMessage
+            ? `Libro seleccionado: ${bookTitleMessage}.`
+            : `Aun no se ha seleccionado ningún libro.`}
+        </p>
+      </div>
+      <div className="d-flex justify-content-center flex-wrap">
+        {filteredBookArray.length > 0 ? (
+          filteredBookArray.map((book) => {
+            return (
+              <BookItem
+                key={book.bookId}
+                title={book.bookTitle}
+                author={book.bookAuthor}
+                rating={book.bookRating}
+                pageCount={book.pageCount}
+                imageUrl={book.imageUrl}
+                selectedBookTitle={setBookTitleMessage}
                 onModalShowHandler={modalShowHandler}
-            />    
-        </div>
-    );
+              />
+            );
+          })
+        ) : (
+          <p>Ningún libro coincide con la búsqueda seleccionada</p>
+        )}
+      </div>
+      <EliminarLibro show={modalShow} onModalShowHandler={modalShowHandler} />
+    </div>
+  );
 };
 
 Books.propTypes = {
-    bookArray: PropTypes.array,
-    onGetBookIdToDelete: PropTypes.func
+  bookArray: PropTypes.array,
 };
 
 export default Books;
