@@ -1,14 +1,18 @@
 import { useRef } from "react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Button, Card, Col, Form, FormGroup, Row } from "react-bootstrap";
 
-const Login = () => {
+const Login = ({ onLogin }) => {
   const [userEmail, setUserEmail] = useState("");
   const [userPassword, setUserPassword] = useState("");
   const [errors, setErrors] = useState({
     email: false,
     password: false,
   });
+
+  const navigate = useNavigate();
+
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
 
@@ -38,11 +42,13 @@ const Login = () => {
       return;
     }
 
-    alert(
-      `El email ingresado es ${userEmail}, y el password ingresado es ${userPassword}`
-    );
+    // alert(
+    //   `El email ingresado es ${userEmail}, y el password ingresado es ${userPassword}`
+    // );
     setUserEmail("");
     setUserPassword("");
+    onLogin();
+    navigate("/");
   };
 
   return (

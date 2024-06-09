@@ -5,7 +5,6 @@ import BookSearch from "../filter/BookSearch";
 import EliminarLibro from "../eliminarLibro/EliminarLibro";
 
 const Books = ({ bookArray }) => {
-  const [bookTitleMessage, setBookTitleMessage] = useState("");
   const [filteredBookArray, setFilteredBookArray] = useState(bookArray);
   const [modalShow, setModalShow] = useState(false);
 
@@ -32,11 +31,6 @@ const Books = ({ bookArray }) => {
     <div>
       <div className="d-flex flex-column align-items-center">
         <BookSearch onLinkValue={buldFilteredBookArray} />
-        <p>
-          {bookTitleMessage
-            ? `Libro seleccionado: ${bookTitleMessage}.`
-            : `Aun no se ha seleccionado ningún libro.`}
-        </p>
       </div>
       <div className="d-flex justify-content-center flex-wrap">
         {filteredBookArray.length > 0 ? (
@@ -44,12 +38,13 @@ const Books = ({ bookArray }) => {
             return (
               <BookItem
                 key={book.bookId}
+                id={book.bookId}
                 title={book.bookTitle}
                 author={book.bookAuthor}
                 rating={book.bookRating}
+                summary={book.summary}
                 pageCount={book.pageCount}
                 imageUrl={book.imageUrl}
-                selectedBookTitle={setBookTitleMessage}
                 onModalShowHandler={modalShowHandler}
               />
             );

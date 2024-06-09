@@ -1,18 +1,32 @@
 import { PropTypes } from "prop-types";
 import { Card, Button, Stack } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 import FiveStars from "../fiveStars/FiveStars";
 
 const BookItem = ({
+  id,
   title,
   author,
   rating,
+  summary,
   pageCount,
   imageUrl,
-  selectedBookTitle,
   onModalShowHandler,
 }) => {
+  const navigate = useNavigate();
+
   const onClickSelectHandler = () => {
-    selectedBookTitle(title);
+    navigate(`/book/${id}`, {
+      state: {
+        book: {
+          title,
+          author,
+          pageCount,
+          summary,
+          imageUrl,
+        },
+      },
+    });
   };
 
   const onClickDeleteHandler = () => {
